@@ -1,11 +1,10 @@
 import express from "express";
+import user from "./middleware/logs.jss";
 const app = express();
 
-app.get("/product", (req, res) => {
-  const { category, id } = req.query;
+app.use(user);
 
-  res.send(`Product Category: ${category} & Product ID: ${id }`);
-});
+app.get("/", user, (req, res) => {});
 
 app.listen(3006, () => {
   console.log("Server Up");
